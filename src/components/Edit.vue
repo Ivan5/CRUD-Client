@@ -11,18 +11,24 @@ export default {
   },
  data () {
    return {
-     sneaker:{
-       name:'',
-       price:0,
-       image:''
-     },
+     sneaker:{},
    }
  },
- methods :{
-   submit(){
+mounted () {
+    const { id } = this.$route.params;
+    this.load(id)
+  },
+  methods: {
+    load(id){
+      API.getSneaker(id)
+        .then((sneaker) => {
+          this.sneaker = sneaker.sneaker;
+        })
+    },
+    submit(){
      //console.log(this.sneaker);
       console.log('Valid');
-      API.createSneaker(this.sneaker)
+      API.updateSneaker(this.sneaker)
         .then((result) => {
           this.$router.push({
             name: 'Sneakers'
@@ -30,7 +36,7 @@ export default {
           
         })
    }
- }
+  }
 }
 </script>
 

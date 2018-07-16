@@ -15,8 +15,9 @@
         </v-card-title>
 
         <v-card-actions>
-          <v-btn flat color="primary" :to="{name:'Edit',params:{id:sneaker.id}}"
-                 >Edit</v-btn>
+          <v-btn color="primary" :to="{name:'Edit',params:{id:sneaker._id}}">Edit</v-btn>
+          <v-btn color="info" :to="{name:'Sneakers'}">All Sneakers</v-btn>
+          <v-btn color="error" @click="remove">Delete Sneaker</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
@@ -39,6 +40,15 @@ export default {
       API.getSneaker(id)
         .then((sneaker) => {
           this.sneaker = sneaker.sneaker;
+        })
+    },
+    remove(){
+      const { id } = this.$route.params;
+      API.deleteSneaker(id)
+        .then(() => {
+          this.$router.push({
+            name: 'Sneakers'
+          })
         })
     }
   }

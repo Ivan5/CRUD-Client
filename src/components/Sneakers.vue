@@ -4,7 +4,7 @@
       <v-card>
         <v-card-media
           :src="sneaker.image"
-          height="200px"
+          height="400px"
         ></v-card-media>
 
         <v-card-title primary-title>
@@ -15,7 +15,12 @@
         </v-card-title>
 
         <v-card-actions>
-          <v-btn flat color="orange">View</v-btn>
+          <v-btn flat color="orange" :to="{
+                    name:'Sneaker',
+                    params: {
+                      id:sneaker._id
+                    }
+                  }">View</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>

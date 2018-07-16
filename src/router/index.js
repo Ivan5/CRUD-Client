@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Landing from '@/components/Landing'
 import Sneakers from '@/components/Sneakers'
 import Sneaker from '@/components/Sneaker'
-
+import Create from '@/components/Create'
 Vue.use(Router)
 
 export default new Router({
@@ -19,9 +19,15 @@ export default new Router({
       component: Sneakers
     },
     {
+      path: '/sneakers/create',
+      name: 'Create',
+      component: Create
+    },
+    {
       path: '/sneakers/:id',
       name: 'Sneaker',
       component: Sneaker
     }
+    
   ]
 })

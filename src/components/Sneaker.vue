@@ -3,20 +3,20 @@
     <v-flex xs12>
       <v-card>
         <v-card-media
-          :src="sneaker.sneaker.image"
+          :src="sneaker.image"
           height="600px"
         ></v-card-media>
 
         <v-card-title primary-title>
           <div>
-            <h3 class="headline mb-0">{{sneaker.sneaker.name}}</h3>
-            <div>${{sneaker.sneaker.price}}</div>
+            <h3 class="headline mb-0">{{sneaker.name}}</h3>
+            <div>${{sneaker.price}}</div>
           </div>
         </v-card-title>
 
         <v-card-actions>
-          <v-btn flat color="orange" 
-                 >View</v-btn>
+          <v-btn flat color="primary" :to="{name:'Edit',params:{id:sneaker.id}}"
+                 >Edit</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
@@ -38,7 +38,7 @@ export default {
     load(id){
       API.getSneaker(id)
         .then((sneaker) => {
-          this.sneaker = sneaker;
+          this.sneaker = sneaker.sneaker;
         })
     }
   }

@@ -7,5 +7,8 @@ export default {
   },
   getSneaker(id){
     return ezFetch.get(`${API_URL}/${id}`)
+  },
+  createSneaker(sneaker){
+    return ezFetch.post(API_URL,sneaker)
   }
 }
